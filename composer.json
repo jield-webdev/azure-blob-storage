@@ -1,5 +1,5 @@
 {
-  "name": "azure-oss/storage",
+  "name": "jield-webdev/azure-blob-storage",
   "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure storage APIs.",
   "keywords": [
     "php",
@@ -7,6 +7,7 @@
     "storage",
     "sdk"
   ],
+  "version": "1.0.0",
   "license": "MIT",
   "require": {
     "php": "^8.1.0",
