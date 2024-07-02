@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+        bootstrap="vendor/autoload.php"
+        cacheResultFile=".build/.phpunit.result.cache"
+        colors="true"
+        columns="max"
+        verbose="true"
+>
+    <php>
+        <env name="AZURE_STORAGE_CONNECTION_STRING" value="DefaultEndpointsProtocol=https;AccountName=yourAccount;AccountKey=yourKey" />
+    </php>
+    <coverage includeUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/Unit/</directory>
+        </testsuite>
+<!--        <testsuite name="functional">-->
+<!--            <directory suffix="Test.php">tests/Functional</directory>-->
+<!--        </testsuite>-->
+    </testsuites>
+</phpunit>
