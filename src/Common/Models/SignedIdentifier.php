@@ -15,7 +15,7 @@ class SignedIdentifier
      * @param string            $id           The id of this signed identifier.
      * @param AccessPolicy|null $accessPolicy The access policy.
      */
-    public function __construct($id = '', AccessPolicy $accessPolicy = null)
+    public function __construct($id = '', ?AccessPolicy $accessPolicy = null)
     {
         $this->setId($id);
         $this->setAccessPolicy($accessPolicy);
@@ -56,7 +56,7 @@ class SignedIdentifier
      *
      * @param AccessPolicy|null $accessPolicy value.
      */
-    public function setAccessPolicy(AccessPolicy $accessPolicy = null)
+    public function setAccessPolicy(?AccessPolicy $accessPolicy = null)
     {
         $this->accessPolicy = $accessPolicy;
     }

@@ -17,11 +17,11 @@ class XmlSerializer implements ISerializer
      * ensuring all sub-elements are arrays as well.
      *
      * @param string $sxml The SimpleXML object.
-     * @param array  $arr  The array into which to store results.
+     * @param array|null $arr  The array into which to store results.
      *
      * @return array
      */
-    private function sxml2arr($sxml, array $arr = null)
+    private function sxml2arr($sxml, ?array $arr = null)
     {
         foreach ((array) $sxml as $key => $value) {
             if (is_object($value) || (is_array($value))) {
@@ -37,10 +37,10 @@ class XmlSerializer implements ISerializer
     /**
      * Takes an array and produces XML based on it.
      *
-     * @param XMLWriter $xmlw       XMLWriter object that was previously instanted
+     * @param \XMLWriter $xmlw XMLWriter object that was previously instanted
      *                              and is used for creating the XML.
-     * @param array     $data       Array to be converted to XML.
-     * @param string    $defaultTag Default XML tag to be used if none specified.
+     * @param array $data Array to be converted to XML.
+     * @param null $defaultTag Default XML tag to be used if none specified.
      */
     private function arr2xml(\XMLWriter $xmlw, array $data, $defaultTag = null)
     {
@@ -148,11 +148,11 @@ class XmlSerializer implements ISerializer
      * as element name.
      *
      * @param array $array      The object to serialize represented in array.
-     * @param array $properties The used properties in the serialization process.
+     * @param array|null $properties The used properties in the serialization process.
      *
      * @return string
      */
-    public function serialize(array $array, array $properties = null)
+    public function serialize(array $array, ?array $properties = null)
     {
         $xmlVersion = '1.0';
         $xmlEncoding = 'UTF-8';

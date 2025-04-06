@@ -12,13 +12,13 @@ class ListPageBlobRangesDiffResult extends ListPageBlobRangesResult
      * Creates ListPageBlobRangesDiffResult object from $parsed response in array representation
      *
      * @param array $headers HTTP response headers
-     * @param array $parsed  parsed response in array format.
-     *
-     * @internal
+     * @param array|null $parsed  parsed response in array format.
      *
      * @return ListPageBlobRangesDiffResult
+     *@internal
+     *
      */
-    public static function create(array $headers, array $parsed = null)
+    public static function create(array $headers, ?array $parsed = null)
     {
         $result = new ListPageBlobRangesDiffResult();
         $headers = array_change_key_case($headers);

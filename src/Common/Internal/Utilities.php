@@ -2,6 +2,7 @@
 
 namespace AzureOSS\Storage\Common\Internal;
 
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 
 class Utilities
@@ -217,11 +218,11 @@ class Utilities
      * ensuring all sub-elements are arrays as well.
      *
      * @param string $sxml SimpleXML object
-     * @param array  $arr  Array into which to store results
+     * @param array|null $arr  Array into which to store results
      *
      * @return array
      */
-    private static function _sxml2arr($sxml, array $arr = null)
+    private static function _sxml2arr($sxml, ?array $arr = null)
     {
         foreach ((array) $sxml as $key => $value) {
             if (is_object($value) || (is_array($value))) {
@@ -274,10 +275,10 @@ class Utilities
     /**
      * Takes an array and produces XML based on it.
      *
-     * @param XMLWriter $xmlw       XMLWriter object that was previously instanted
+     * @param \XMLWriter $xmlw XMLWriter object that was previously instanted
      *                              and is used for creating the XML.
-     * @param array     $data       Array to be converted to XML
-     * @param string    $defaultTag Default XML tag to be used if none specified.
+     * @param array $data Array to be converted to XML
+     * @param null $defaultTag Default XML tag to be used if none specified.
      */
     private static function _arr2xml(
         \XMLWriter $xmlw,
@@ -702,9 +703,9 @@ class Utilities
     /**
      * Validates the provided metadata array.
      *
-     * @param array $metadata The metadata array.
+     * @param array|null $metadata The metadata array.
      */
-    public static function validateMetadata(array $metadata = null)
+    public static function validateMetadata(?array $metadata = null)
     {
         if (null !== $metadata) {
             Validate::isArray($metadata, 'metadata');
@@ -776,8 +777,8 @@ class Utilities
      * Static function used to determine if the request is performed against
      * secondary endpoint.
      *
-     * @param Psr\Http\Message\RequestInterface $request The request performed.
-     * @param array                             $options The options of the
+     * @param RequestInterface $request The request performed.
+     * @param array $options The options of the
      *                                                   request. Must contain
      *                                                   Resources::ROS_SECONDARY_URI
      *

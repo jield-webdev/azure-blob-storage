@@ -15,18 +15,18 @@ class GetContainerACLResult
      * @param string    $publicAccess container public access
      * @param string    $etag         container etag
      * @param \DateTime $lastModified last modification date
-     * @param array     $parsed       parsed response into array
+     * @param array|null $parsed       parsed response into array
      *                                representation
      *
-     * @internal
-     *
      * @return self
+     *@internal
+     *
      */
     public static function create(
         $publicAccess,
         $etag,
         \DateTime $lastModified,
-        array $parsed = null,
+        ?array $parsed = null,
     ) {
         $result = new GetContainerAclResult();
         $result->setETag($etag);

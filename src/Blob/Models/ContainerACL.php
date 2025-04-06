@@ -24,13 +24,13 @@ class ContainerACL extends ACLBase
      * ContainerACL
      *
      * @param string $publicAccess The container public access.
-     * @param array  $parsed       The parsed response into array representation.
-     *
-     * @internal
+     * @param array|null $parsed       The parsed response into array representation.
      *
      * @return ContainerACL
+     *@internal
+     *
      */
-    public static function create($publicAccess, array $parsed = null)
+    public static function create($publicAccess, ?array $parsed = null)
     {
         Validate::isTrue(
             PublicAccessType::isValid($publicAccess),

@@ -145,9 +145,9 @@ class CommitBlobBlocksOptions extends BlobServiceOptions
     /**
      * Sets blob metadata.
      *
-     * @param array $metadata value.
+     * @param array|null $metadata value.
      */
-    public function setMetadata(array $metadata = null)
+    public function setMetadata(?array $metadata = null)
     {
         $this->_metadata = $metadata;
     }

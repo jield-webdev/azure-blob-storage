@@ -30,12 +30,12 @@ class JsonSerializer implements ISerializer
      * Serializes given array. The array indices must be string to use them as
      * as element name.
      *
-     * @param array $array      The object to serialize represented in array.
-     * @param array $properties The used properties in the serialization process.
+     * @param array|null $array      The object to serialize represented in array.
+     * @param array|null $properties The used properties in the serialization process.
      *
      * @return string
      */
-    public function serialize(array $array = null, array $properties = null)
+    public function serialize(?array $array = null, ?array $properties = null)
     {
         Validate::isArray($array, 'array');
 

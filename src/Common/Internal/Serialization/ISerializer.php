@@ -19,11 +19,11 @@ interface ISerializer
      * as element name.
      *
      * @param array $array      The object to serialize represented in array.
-     * @param array $properties The used properties in the serialization process.
+     * @param array|null $properties The used properties in the serialization process.
      *
      * @return string
      */
-    public function serialize(array $array, array $properties = null);
+    public function serialize(array $array, ?array $properties = null);
 
     /**
      * Unserializes given serialized string.

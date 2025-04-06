@@ -2,6 +2,8 @@
 
 namespace AzureOSS\Storage\Common\Internal;
 
+use AzureOSS\Storage\Common\Internal\Serialization\ISerializer;
+
 class RestProxy
 {
     /**
@@ -17,11 +19,11 @@ class RestProxy
     /**
      * Initializes new RestProxy object.
      *
-     * @param Serialization\ISerializer $dataSerializer The data serializer.
+     * @param ISerializer|null $dataSerializer The data serializer.
      */
-    public function __construct(Serialization\ISerializer $dataSerializer = null)
+    public function __construct(?Serialization\ISerializer $dataSerializer = null)
     {
-        $this->middlewares = [];
+        $this->middlewares    = [];
         $this->dataSerializer = $dataSerializer;
         //For logging the request and responses.
         // $this->middlewares[] = new HistoryMiddleware('.\\messages.log');
@@ -54,8 +56,8 @@ class RestProxy
      * Doesn't add the value if it satisfies empty().
      *
      * @param array  &$queryParameters The query parameters.
-     * @param string $key              The query variable name.
-     * @param string $value            The query variable value.
+     * @param string $key The query variable name.
+     * @param string $value The query variable value.
      */
     protected function addOptionalQueryParam(array &$queryParameters, $key, $value)
     {
@@ -74,8 +76,8 @@ class RestProxy
      * Doesn't add the value if it satisfies empty().
      *
      * @param array  &$headers The HTTP header parameters.
-     * @param string $key      The HTTP header name.
-     * @param string $value    The HTTP header value.
+     * @param string $key The HTTP header name.
+     * @param string $value The HTTP header value.
      */
     protected function addOptionalHeader(array &$headers, $key, $value)
     {
