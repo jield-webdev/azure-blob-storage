@@ -19,21 +19,21 @@ class CommonRequestMiddleware extends MiddlewareBase
      * be added.
      *
      * @param IAuthScheme|null $authenticationScheme The authentication scheme.
-     * @param string      $storageAPIVersion    Azure Storage Service API version,
+     * @param string $storageAPIVersion Azure Storage Service API version,
      *                                          like '2016-05-31'.
-     * @param string      $serviceSDKVersion    Like '1.0.1' or '1.2.0'.
-     * @param array       $headers              The headers to be added.
+     * @param string $serviceSDKVersion Like '1.0.1' or '1.2.0'.
+     * @param array $headers The headers to be added.
      */
     public function __construct(
-        ?IAuthScheme $authenticationScheme = null,
+        ?IAuthScheme $authenticationScheme,
         $storageAPIVersion,
         $serviceSDKVersion,
         array $headers = [],
     ) {
         $this->authenticationScheme = $authenticationScheme;
-        $this->msVersion = $storageAPIVersion;
-        $this->userAgent = self::getUserAgent($serviceSDKVersion);
-        $this->headers = $headers;
+        $this->msVersion            = $storageAPIVersion;
+        $this->userAgent            = self::getUserAgent($serviceSDKVersion);
+        $this->headers              = $headers;
     }
 
     /**
@@ -67,7 +67,7 @@ class CommonRequestMiddleware extends MiddlewareBase
         );
 
         //Adding date.
-        $date = gmdate(Resources::AZURE_DATE_FORMAT, time());
+        $date   = gmdate(Resources::AZURE_DATE_FORMAT, time());
         $result = $result->withHeader(Resources::DATE, $date);
 
         //Adding client request-ID if not specified by the user.
